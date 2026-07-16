@@ -25,7 +25,7 @@ function LinkedinIcon({ className = "w-5 h-5" }: { className?: string }) {
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
-  const email = "marcelolencina.dev@gmail.com";
+  const email = "marcelodaniellencina@gmail.com";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(email);
@@ -112,7 +112,7 @@ export default function Contact() {
           {/* Social Grid */}
           <div className="flex items-center justify-center space-x-6">
             <a
-              href="https://linkedin.com/in/marcelolencina"
+              href="https://linkedin.com/in/mlmarce"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3.5 rounded-full glassmorphism border-white/5 hover:border-cyan-bright/35 hover:bg-white/5 text-gray-400 hover:text-cyan-bright hover:scale-105 transition-all duration-300 shadow-md"
@@ -121,7 +121,7 @@ export default function Contact() {
               <LinkedinIcon className="w-5 h-5" />
             </a>
             <a
-              href="https://github.com/marcelolencina"
+              href="https://github.com/MLMarce"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3.5 rounded-full glassmorphism border-white/5 hover:border-violet-electric/35 hover:bg-white/5 text-gray-400 hover:text-violet-electric hover:scale-105 transition-all duration-300 shadow-md"
