@@ -1,26 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --color-cyan-bright: #00f0ff;
+  --color-violet-electric: #7c3aed;
+  --color-pink-neon: #ff007f;
+  --color-dark-deep: #030303;
+  --color-dark-card: #0a0a0f;
+  --color-dark-gray: #121218;
+
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #030303;
+  --foreground: #f3f4f6;
+  --cyan-bright: #00f0ff;
+  --violet-electric: #7c3aed;
+  --pink-neon: #ff007f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1a24;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #252535;
+}
+
+/* Glassmorphism utility class */
+.glassmorphism {
+  background: rgba(10, 10, 15, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glassmorphism-light {
+  background: rgba(10, 10, 15, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Rotating Neon Card Border hover effect */
+.neon-card-border {
+  position: relative;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.neon-card-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 0.8rem;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg,
+    transparent 90deg,
+    var(--cyan-bright) 130deg,
+    var(--violet-electric) 180deg,
+    transparent 220deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.neon-card-border:hover {
+  background: rgba(10, 10, 15, 0.7);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
+.neon-card-border:hover::before {
+  opacity: 1;
+  animation: border-rotate 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes border-rotate {
+  0% {
+    --border-angle: 0deg;
+  }
+  100% {
+    --border-angle: 180deg;
+  }
+}
+
+/* Flow Line Animation */
+@keyframes flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.animate-flow-line {
+  stroke-dasharray: 8 12;
+  animation: flow 2s linear infinite;
+}
+
+/* Pulsing Dots */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Utility Animations */
+.glow-text-cyan {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+.glow-text-violet {
+  text-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
 }
