@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Background gradient: deep dark -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#030303"/>
+    </linearGradient>
+
+    <!-- Cyan glow gradient for M -->
+    <linearGradient id="m-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#00b8cc"/>
+    </linearGradient>
+
+    <!-- Violet gradient for L -->
+    <linearGradient id="l-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9d65f5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <!-- Border gradient (conic-style via linear approximation) -->
+    <linearGradient id="border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#7c3aed" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff007f" stop-opacity="0.6"/>
+    </linearGradient>
+
+    <!-- Glow filter for cyan M -->
+    <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow filter for violet L -->
+    <filter id="glow-violet" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Clip to rounded square -->
+    <clipPath id="rounded-clip">
+      <rect x="0" y="0" width="64" height="64" rx="14" ry="14"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect x="0" y="0" width="64" height="64" rx="14" ry="14" fill="url(#bg-grad)"/>
+
+  <!-- Subtle gradient border -->
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" ry="13.5"
+        fill="none"
+        stroke="url(#border-grad)"
+        stroke-width="1.5"
+        opacity="0.7"/>
+
+  <!-- Very subtle inner glow circle (background accent) -->
+  <ellipse cx="32" cy="32" rx="26" ry="26"
+           fill="none"
+           stroke="#00f0ff"
+           stroke-width="0.3"
+           opacity="0.08"/>
+
+  <!-- Letter M — cyan, geometric, bold -->
+  <!-- M occupies left portion: x 9–34, y 14–50 -->
+  <g filter="url(#glow-cyan)">
+    <path d="
+      M 9 50
+      L 9 14
+      L 16 14
+      L 23.5 33
+      L 31 14
+      L 38 14
+      L 38 50
+      L 32 50
+      L 32 26
+      L 25 44
+      L 22 44
+      L 15 26
+      L 15 50
+      Z
+    " fill="url(#m-grad)"/>
+  </g>
+
+  <!-- Letter L — violet, geometric, bold -->
+  <!-- L occupies right portion: x 36–55, y 14–50 -->
+  <g filter="url(#glow-violet)">
+    <path d="
+      M 40 14
+      L 46 14
+      L 46 44
+      L 56 44
+      L 56 50
+      L 40 50
+      Z
+    " fill="url(#l-grad)"/>
+  </g>
+
+  <!-- Subtle cyan dot accent top-right -->
+  <circle cx="55" cy="11" r="2.5" fill="#00f0ff" opacity="0.5"/>
+  <!-- Subtle violet dot accent bottom-left -->
+  <circle cx="10" cy="54" r="1.8" fill="#7c3aed" opacity="0.45"/>
+</svg>
