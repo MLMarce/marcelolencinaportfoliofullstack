@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import MechanicalFireflies from "@/components/MechanicalFireflies";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Marcelo Lencina | Full Stack Developer & AI Integrator",
@@ -60,6 +61,9 @@ export default function RootLayout({
 
         {/* Main Content Area */}
         <main className="flex-grow z-10">{children}</main>
+
+        {/* Floating WhatsApp Button */}
+        <WhatsAppButton />
       </body>
     </html>
   );
