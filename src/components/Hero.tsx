@@ -26,7 +26,7 @@ export default function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-16 overflow-hidden"
     >
       {/* Decorative Grid Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a24_1px,transparent_1px),linear-gradient(to_bottom,#1a1a24_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-15 -z-10" />
@@ -50,19 +50,19 @@ export default function Hero() {
 
           {/* Heading */}
           <div className="space-y-2 md:space-y-4">
-            <h2 className="text-sm md:text-base font-mono tracking-widest text-violet-electric uppercase">
+            <h2 className="text-xs md:text-base font-mono tracking-widest text-violet-electric uppercase">
               Hola, mi nombre es
             </h2>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white leading-tight">
               Marcelo Lencina
             </h1>
-            <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-bright via-violet-electric to-pink-neon bg-clip-text text-transparent">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-bright via-violet-electric to-pink-neon bg-clip-text text-transparent">
               Full Stack Developer
             </h3>
           </div>
 
           {/* Description */}
-          <p className="text-gray-400 text-base md:text-lg max-w-xl leading-relaxed font-light">
+          <p className="text-gray-400 text-sm md:text-lg max-w-xl leading-relaxed font-light">
             Desarrollo aplicaciones web escalables utilizando{" "}
             <span className="text-white font-medium">React, Next.js, TypeScript, Node.js y PostgreSQL</span>.
             <br />
@@ -98,7 +98,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex justify-center lg:justify-end"
+          className="hidden md:flex justify-end"
         >
           <InteractiveTechVisual />
         </motion.div>

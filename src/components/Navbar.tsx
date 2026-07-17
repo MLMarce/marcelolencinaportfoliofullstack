@@ -57,6 +57,18 @@ export default function Navbar() {
     };
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -78,9 +90,9 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "py-4 bg-[#030303]/60 backdrop-blur-md border-b border-white/5 shadow-lg"
-          : "py-6 bg-transparent"
+        isScrolled || mobileMenuOpen
+          ? "py-4 bg-[#0a0a0f] backdrop-blur-xl border-b border-white/10 shadow-lg"
+          : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -133,37 +145,41 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg text-gray-400 hover:text-white focus:outline-none"
+          aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={mobileMenuOpen}
+          className="md:hidden p-2.5 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 focus:outline-none transition-colors duration-200 border border-transparent hover:border-white/10"
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Full opaque dark background for readability */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glassmorphism border-b border-white/10 py-6 px-6 flex flex-col space-y-4 animate-in fade-in slide-in-from-top-5 duration-200">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-[#0a0a0f] border-b border-white/10 py-5 px-5 flex flex-col space-y-1 shadow-2xl">
           {navItems.map((item) => (
             <a
               key={item.id}
               href={`#${item.id}`}
               onClick={(e) => handleNavClick(e, item.id)}
-              className={`text-lg font-medium py-2 px-3 rounded-lg transition-colors ${
+              className={`flex items-center text-base font-medium py-3.5 px-4 rounded-xl transition-all duration-200 ${
                 activeSection === item.id
-                  ? "text-cyan-bright bg-white/5"
-                  : "text-gray-300 hover:text-white"
+                  ? "text-cyan-bright bg-cyan-bright/10 border border-cyan-bright/20"
+                  : "text-gray-300 hover:text-white hover:bg-white/5"
               }`}
             >
               {item.label}
             </a>
           ))}
-          <a
-            href="/cv_marcelo_lencina.pdf"
-            download
-            className="w-full text-center inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-lg text-base font-medium text-white border border-cyan-bright/30 bg-gradient-to-r from-cyan-bright/10 to-violet-electric/10 hover:from-cyan-bright hover:to-violet-electric hover:shadow-[0_0_25px_rgba(0,240,255,0.4)] transition-all duration-300"
-          >
-            <FileText size={18} />
-            <span>Descargar CV</span>
-          </a>
+          <div className="pt-3 border-t border-white/10 mt-3">
+            <a
+              href="/cv_marcelo_lencina.pdf"
+              download
+              className="w-full text-center inline-flex items-center justify-center space-x-2 px-5 py-3.5 rounded-xl text-base font-semibold text-white border border-cyan-bright/40 bg-gradient-to-r from-cyan-bright/15 to-violet-electric/15 hover:from-cyan-bright/30 hover:to-violet-electric/30 hover:border-cyan-bright/60 transition-all duration-300"
+            >
+              <FileText size={17} />
+              <span>Descargar CV</span>
+            </a>
+          </div>
         </div>
       )}
     </header>

@@ -54,7 +54,7 @@ export default function Contact() {
           <h2 className="text-sm font-mono tracking-widest text-cyan-bright uppercase">
             Contacto
           </h2>
-          <h3 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h3 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
             ¿Listo para construir el futuro?
           </h3>
           <p className="text-gray-400 text-base md:text-lg max-w-xl mx-auto font-light leading-relaxed">
@@ -92,13 +92,13 @@ export default function Contact() {
           className="flex flex-col items-center space-y-8 pt-8 border-t border-white/5"
         >
           {/* Quick Copy Widget */}
-          <div className="inline-flex items-center space-x-3 glassmorphism px-4 py-2.5 rounded-lg border border-white/5 max-w-sm">
-            <span className="text-gray-300 text-xs md:text-sm font-mono tracking-tight select-all">
+          <div className="inline-flex items-center space-x-3 glassmorphism px-4 py-2.5 rounded-lg border border-white/5 max-w-full">
+            <span className="text-gray-300 text-xs md:text-sm font-mono tracking-tight select-all break-all min-w-0">
               {email}
             </span>
             <button
               onClick={copyToClipboard}
-              className="p-1.5 rounded-md hover:bg-white/5 text-gray-400 hover:text-white transition-colors focus:outline-none"
+              className="flex-shrink-0 p-1.5 rounded-md hover:bg-white/5 text-gray-400 hover:text-white transition-colors focus:outline-none"
               title="Copiar email"
             >
               {copied ? (
